@@ -1,0 +1,100 @@
+{% extends 'ping/liens.html' %}
+{% load static %}
+{% block title %}Historique{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
+    <link href="{% static 'ping/css/historique.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Connexion</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="titre-historique">
+        <h1>Un peu d'histoire...</h1>
+    </div>
+        <p>Le club a été fondé en 1914. Avec près de 300 membres à ce jour, l'Espérance de Reuilly se maintient au plus haut niveau parisien sous la conduite de son président Didier Doreau.
+            Les très bons résultats en compétition ne le détourne pourtant pas de ses autres objectifs : la formation des jeunes et le développement d'une pratique de loisirs. Ainsi, le club participe aux ateliers bleus de la ville de Paris permettant aux enfants des écoles de découvrir le tennis de table dans les meilleures conditions.
+            La formation des jeunes au travers des entrainements et des stages organisés à chaque vacances scolaires et la compétiion sont d'ailleurs complémentaires puisque le club a formé plusieurs champions. Nous citerons entre autre Olivier Marmurek (International français, 2 fois vice champion de France) et une mention particulière pour Patrick Chila, qui a remporté en 2000, la médaille de bronze aux jeux olympiques de Sydney et qui a été plusieurs fois champion de France. Ces deux joueurs, associés à Damien Eloi, permirent à l'Espérance de Reuilly de briller en finissant vice champion de France dans le championnat par équipes à la fin des années 80.
+            Les groupes de loisirs, encadrés par des entraineurs ayant leur brevet d'état, permettent un entrainement à la carte en fonction des participants dans une ambiance décontractée et ludique. Les femmes sont, elles aussi, bien présentes au sein du club puisqu'elles représentent environ 20% de nos effectifs. Même si nous regrettons qu'elles ne soient pas plus nombreuses à pratiquer notre sport.
+        </p>
+
+
+    <div class="images-historique mb-3 text-center">
+        <img class="journal1 mh-auto mw-100 mb-3" src="{% static 'ping/img/historique/journal1.jpg' %}">
+        <img class="journal2 mh-auto mw-100" src="{% static 'ping/img/historique/journal2.jpg' %}">
+        <img class="mh-auto mw-100" src="{% static 'ping/img/historique/affiche_reuilly.jpg' %}">
+    </div>
+    <div class="magazine-content mt-4">
+        <h3 class="mb-3">Retrouvez l'article complet consacré aux 100ans de l'Espérance de Reuilly</h3>
+        <div class="magazine">
+            <img class="mr-3 mh-auto mw-100" src="{% static 'ping/img/historique/pingpong_mag1.jpg' %}">
+            <img class="mh-auto mw-100" src="{% static 'ping/img/historique/pingpong_mag2.jpg' %}">
+            <img class="mh-auto mw-100 mr-3" src="{% static 'ping/img/historique/pingpong_mag3.jpg' %}">
+            <img class="mh-auto mw-100 " src="{% static 'ping/img/historique/pingpong_mag4.jpg' %}">
+        </div>
+
+    </div>
+    <div class="text-center">
+        <a  href="http://www.reuillytt.fr/resources/PING+PONG+MAG+REUILLY+v2.pdf">Lire Article Complet</a>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block JavaScript %}
+
+{% endblock %}

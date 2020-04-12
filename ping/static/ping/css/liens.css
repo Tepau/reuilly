@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "TradeGothicLTStd";
+  src: url("/static/ping/fonts/TradeGothicLTStd-Bd2.otf");
+}
+
+
+
+.divtitre {
+    margin-top: 90px;
+    height: 20vh;
+    display: flex;
+    margin-bottom: 30px;
+
+}
+
+.liens {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 50px;
+}
+
+.mairie {
+    height: 130px;
+}
+
+.titre {
+    margin : auto;
+    color: black;
+    display: flex
+}
+
+.titre h1 {
+    font-size: 3.3em!important;
+    text-transform: uppercase;
+    margin: auto;
+}
+
+.categorie-liens {
+    margin-bottom : 50px;
+}
+
+
+.bloc-liens a, .bloc-liens a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+h2{
+    margin-bottom: 25px;
+}

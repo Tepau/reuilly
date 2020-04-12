@@ -1,0 +1,19 @@
+ul{
+    list-style-type : none;
+}
+
+label {
+    margin-right: 10px;
+}
+
+.container {
+    margin-top : 150px;
+}
+
+label input {
+    margin-right:5px;
+}
+
+#div_id_seance{
+    display: none;
+}

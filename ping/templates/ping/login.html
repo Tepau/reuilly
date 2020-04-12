@@ -1,0 +1,84 @@
+{% extends 'ping/liens.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Inscription/Connexion{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/login.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:historique' %}">Historique</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Mon Compte</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container text-center">
+        <div class="connexion ml-auto mr-auto">
+            <h1>Connexion</h1>
+            {% if error %}
+            <p class="erreur">ERREUR D'AUTHENTIFICATION</p>
+            {% endif %}
+                <form method="post" class="border" action="{% url 'reuillytt:connexion' %}" novalidate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Se connecter" class="mt-4 mb-4" />
+                </form>
+            <p>Pas encore Inscrit <a href="{% url 'reuillytt:creation' %}">Inscrivez-vous</a></p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

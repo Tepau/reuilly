@@ -1,0 +1,186 @@
+{% extends 'ping/index.html' %}
+{% load static %}
+{% block title %}Horaires{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/horaires.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:historique' %}">Historique</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+              </div>
+            </li>
+
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Mon Compte</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-section" id="horaires">
+    <div class="container">
+        <h2 class="text-center mb-4">Horaires Saison 2019/2020</h2>
+                  <table class="m-auto">
+                      <caption>(*) Jeu Libre Uniquement Pour les Membres du Club</caption>
+
+                      <tbody>
+                        <tr>
+                          <th rowspan="5"  scope="rowgroup">Lundi</th>
+                          <td scope="row">17h30 - 19h</td>
+                          <td>Groupe Initiation</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">18h30 - 20h</td>
+                          <td>Groupe Espoirs</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">19h - 20h30</td>
+                          <td>Groupe Adultes Loisirs</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">20h30 - 22H</td>
+                          <td>Groupe Adultes Compétitions - Equipes 5 à 11</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">22h - 23h30</td>
+                          <td>Jeu libre (*)</td>
+                        </tr>
+
+                        <tr>
+                          <th rowspan="5"  scope="rowgroup">Mardi</th>
+                          <td scope="row">17h30 - 19h</td>
+                          <td>Groupe Initiation</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">19h - 20h30</td>
+                          <td>Groupe Adultes Loisirs (Groupe 1)</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">19h - 20h30</td>
+                          <td>Groupe Élites - Équipes 1 à 4 (Hommes et Femmes)</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">20h30 - 22H</td>
+                          <td>Groupe Adultes Loisirs (Groupe 2)</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">20h30 - 22h</td>
+                          <td>Groupe Adultes Compétitions (Jeu libre avec entraîneur)</td>
+                        </tr>
+
+                        <tr>
+                          <th rowspan="3"  scope="rowgroup">Mercredi</th>
+                          <td scope="row">17h - 18h30</td>
+                          <td>Groupe Initiation + Groupe Filles</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">18h30 - 20h15</td>
+                          <td>Groupe Espoirs</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">20h15 - 21h45</td>
+                          <td>Groupe Adultes Loisirs</td>
+                        </tr>
+
+                        <tr>
+                          <th rowspan="3"  scope="rowgroup">Jeudi</th>
+                          <td scope="row">17h30 - 19h</td>
+                          <td>Groupe Initiation</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">17h30 - 19h15</td>
+                          <td>Groupe Espoirs</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">19h15 - 21h15</td>
+                          <td>Groupe Élites - Équipes 1 à 5 (Hommes et Femmes)</td>
+                        </tr>
+
+                        <tr>
+                          <th rowspan="2"  scope="rowgroup">Vendredi</th>
+                          <td scope="row">18h15 - 20h</td>
+                          <td>Groupe Initiation + Groupe Filles</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">20h - 22h30</td>
+                          <td>Jeu Libre (*) sauf jour de Compétition</td>
+                        </tr>
+
+                        <tr>
+                          <th rowspan="3"  scope="rowgroup">Samedi</th>
+                          <td scope="row">9h - 10h30</td>
+                          <td>Groupe Initiation</td>
+                        </tr>
+                        <tr>
+                          <td scope="row">10h30 - 12h</td>
+                          <td>Groupe Adultes Loisirs (jeu libre avec entraîneur)</td>
+                        </tr>
+                        <tr class="last">
+                          <td scope="row">13h - 19h</td>
+                          <td>Jeu Libre (*) sauf jour de compétition</td>
+                        </tr>
+
+                        <tr class="last">
+                          <td scope="rowgroup">Dimanche</th>
+                          <td scope="row">9h - 15h</td>
+                          <td>Jeu libre (*)</td>
+                        </tr>
+
+
+                      </tbody>
+                  </table>
+      </div>
+  </section>
+
+{% endblock %}
+
+{% block JavaScript %}
+
+
+{% endblock %}

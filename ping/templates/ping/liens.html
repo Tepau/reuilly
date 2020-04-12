@@ -1,0 +1,156 @@
+{% extends 'ping/index.html' %}
+{% load static %}
+{% block title %}Liens Utiles{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:historique' %}">Historique</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Mon Compte</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid divtitre">
+    <div class="titre">
+        <h1>Liens Utiles</h1>
+    </div>
+</div>
+<div class="container">
+
+    <div class="categorie-liens">
+        <h2>Partenaires</h2>
+        <div class="liens">
+            <div class="bloc-liens">
+                <a href="https://www.generationnel.fr/">
+                    <img src="{% static 'ping/img/generationnel.jpg' %}" class="h-auto mw-100">
+                </a>
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.andro.de/produkte/">
+                    <img src="{% static 'ping/img/andro.png' %}" class="h-auto mw-100">
+                </a>
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.stationforme.com/">
+                    <img src="{% static 'ping/img/station-forme.jpg' %}" class="h-auto mw-100">
+                </a>
+
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.wsport.com/">
+                    <img src="{% static 'ping/img/wack.jpg' %}" class="h-auto mw-100">
+                </a>
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.creditmutuel.fr/home/index.html">
+                    <img src="{% static 'ping/img/creditmutuel.png' %}" class="h-auto mw-100">
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="categorie-liens">
+        <h2>TV</h2>
+        <div class="liens">
+            <div class="bloc-liens">
+                <a href="https://tv.ittf.com/">
+                    <img src="{% static 'ping/img/ittv.png' %}" class="h-75 mw-100">
+                </a>
+
+            </div>
+            <div class="bloc-liens">
+                <a href="http://www.fftt.com/communication/fftttv/fftttv.htm">
+                    <img src="{% static 'ping/img/fftttv.jpg' %}" class="h-auto mw-100">
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="categorie-liens">
+        <h2>Institutions</h2>
+        <div class="liens">
+            <div class="bloc-liens">
+                <a href="http://www.fftt.com/site/">
+                    <img src="{% static 'ping/img/fftt.jpeg' %}" class="h-auto mw-100">
+                </a>
+
+            </div>
+            <div class="bloc-liens">
+                <a href="http://www.paristt.com/">
+                    <img src="{% static 'ping/img/paris.jpeg' %}" class="h-auto mw-100">
+                </a>
+
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.ittf.com/">
+                    <img src="{% static 'ping/img/ittf.jpeg' %}" class="h-auto mw-100">
+                </a>
+            </div>
+            <div class="bloc-liens">
+                <a href="https://www.mairie12.paris.fr/">
+                    <img src="{% static 'ping/img/mairie.png' %}" class="mairie mb-3 mw-100">
+                </a>
+            </div>
+            <div class="bloc-liens">
+                <a href="http://www.fftt-idf.com/">
+                    <img src="{% static 'ping/img/idf.jpeg' %}" class=" mb-4 mw-100">
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

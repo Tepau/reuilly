@@ -1,0 +1,371 @@
+@font-face {
+  font-family: "Caviar Dreams";
+  src: url("/static/ping/fonts/CaviarDreams.ttf");
+}
+
+@font-face {
+  font-family: "Gilroy-Light";
+  src: url("/static/ping/fonts/Gilroy-Light.otf");
+}
+
+@font-face {
+  font-family: "Cabin-SemiBold";
+  src: url("/static/ping/fonts/Cabin-SemiBold-TTF.ttf");
+}
+
+
+/* CLUB */
+
+body {
+ font-family: Gilroy, Gilroy-Light, 'Caviar Dreams'!important;
+}
+
+.logo {
+        height: 100px;
+}
+
+.horaires-link {
+    background-color: transparent!important;
+    border: 2px solid #007bff!important;
+
+}
+
+
+
+
+.horaires-link:hover {
+    background-color: #007bff!important;
+
+}
+
+.inscription-link {
+    border: 2px solid #007bff!important;
+}
+
+
+
+.inscription-link:hover {
+    background-color: transparent!important;
+
+}
+
+#club .presentation-club{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+#nom-club {
+    font-size: 3em;
+}
+
+.intro-description{
+    color:#2a4cc3;
+}
+.nav-item a, .moncompte .btn {
+    color: rgba(0, 0, 0, 0.85)!important;
+}
+
+.moncompte .btn-primary {
+    background-color: white
+}
+
+.moncompte .btn-primary:hover {
+    background-color: #007bff;
+}
+
+#social-network a{
+    color: #007bff!important;
+}
+
+.boutons-club .btn-primary {
+    background-color: white;
+}
+
+.boutons-club .btn-primary:hover {
+    background-color: #007bff;
+}
+
+
+#club i {
+    color: #007bff;
+}
+
+#club a{
+    text-decoration: none;
+    color: #212529;
+}
+
+.grid-partenaires{
+	display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 40px;
+}
+
+
+
+.description-section{
+    font-family: Gilroy, 'Caviar Dreams';
+    margin-bottom: 70px;
+    margin-top: 75px;
+    text-align: center;
+}
+
+.description-section p {
+    font-size: 1.3em;
+}
+
+#social-network a {
+    margin-right: 15px;
+}
+
+.MagicScroll a {
+    display: none!important;
+}
+
+.description-section, #actualites {
+    font-family: Gilroy, 'Caviar Dreams';
+}
+#actualites a:link {
+    text-decoration:none;
+    color: black;
+}
+
+footer img{
+    height: 80px;
+    margin-right: 8px;
+}
+
+.footer-text{
+    margin-top: 25px;
+}
+
+.mentions{
+    margin-left: auto;
+}
+
+header{
+    position: relative;
+}
+
+.header-buttons{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.intro-text a{
+        font-size: 1.8em;
+        margin-top: 3em;
+
+    }
+/* HEADER */
+
+header{
+  text-align: center;
+  color: white;
+  background: url("../img/fond_reuilly.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 90vh;
+}
+
+
+
+#map{
+   height:400px;
+   width: 100%;
+}
+
+
+#sous-titre{
+    font-size: 2.3em;
+}
+ .icons{
+    height: 60px;
+
+ }
+
+.intro-description {
+    color: white;
+    text-shadow: #151209 1px 0 10px;
+
+}
+
+#nom-club {
+    font-size: 2.5em;
+
+}
+
+header {
+        margin-top: 90px;
+    }
+
+#titre-actualites{
+    text-align: center;
+}
+
+.actus {
+        text-align: center;
+   }
+
+.agenda {
+   margin-bottom: 15px;
+}
+
+.facebook{
+   width: 100%;
+}
+
+/* iPhone 6, 7, & 8 in portrait */
+@media only screen and (min-device-width : 319px) and (max-device-width : 667px) and (orientation : portrait) {
+
+    header {
+        height: 70vh;
+    }
+
+    .intro-description{
+        font-size: 2em;
+    }
+    #nom-club  {
+        padding-top: 160px;
+
+    }
+    .titre-club {
+        font-size: 2.2em;
+    }
+
+    .texte-club{
+        font-size: 1.7em;
+    }
+
+    .description-section h2 {
+        font-size: 3.4em;
+    }
+
+    .description-section p {
+        font-size: 2.4em;
+    }
+
+    .renseignement {
+        font-size: 1.7em;
+    }
+}
+
+/* iPhone 6, 7, & 8 in landscape */
+@media only screen and (min-device-width : 319px) and (max-device-width : 667px) and (orientation : landscape){
+
+    #nom-club {
+        padding-top: 70px;
+    }
+
+    .header-buttons{
+        bottom: 50px;
+    }
+
+}
+
+/* iPhone X in landscape */
+@media only screen and (min-device-width : 319px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3)and (orientation : landscape) {
+    #nom-club {
+        padding-top: 70px;
+    }
+
+    .header-buttons{
+        bottom: 30px;
+    }
+}
+
+
+@media only screen and (min-device-width:768px) and (max-device-witdh:991px) {
+    #mainNav{
+        font-family: Cabin-SemiBold;
+    }
+
+    header {
+        margin-top: 100px;
+    }
+
+    #nom-club {
+        font-size: 4.2em;
+        padding-top: 150px;
+    }
+
+
+    .titre-section {
+        display: flex;
+    }
+
+    .description-section  {
+        margin-top: 75px;
+
+    }
+
+}
+/* iPad in portrait */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    #nom-club {
+        padding-top: 150px;
+    }
+}
+
+@media only screen and (min-width:992px) and (max-width: 1062px){
+
+    #navbarSupportedContent {
+        justify-content: flex-start!important;
+    }
+
+
+}
+
+
+
+
+@media only screen and (min-width:992px) {
+
+    #mainNav {
+        height: 90px;
+        font-family: Cabin-SemiBold;
+    }
+
+
+
+    #nom-club {
+        font-size: 4em;
+        padding-top: 30px;
+    }
+
+    #social-network {
+        margin-left : 5px;
+    }
+
+    .actus {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        grid-gap: 20px;
+    }
+    .agenda {
+        width: 80%;
+    }
+
+    .moncompte {
+        position: absolute;
+        right: 25px;
+        display: flex;
+
+    }
+
+    .logo {
+        height: 90px;
+    }
+
+
+
+}
+
+
+

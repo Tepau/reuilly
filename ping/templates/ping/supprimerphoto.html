@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Suppression Photo</title>
+    <link href="{% static 'ping/css/supprimerphoto.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid grid-images">
+    {% for image in images %}
+    <div class="image">
+       {{ image.nom }}
+        <form method="post" action="{% url 'reuillytt:supprimerphoto'  %}">
+        {% csrf_token %}
+        <input type="hidden" name="id_photo" value="{{ image.id }}" >
+        <button type="submit">Supprimer</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<p><a href="{% url 'index' %}#portfolio-lg">Voir modifications</a></p>
+
+
+
+</body>
+</html>

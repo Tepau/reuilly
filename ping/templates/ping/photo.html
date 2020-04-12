@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout Photo</title>
+</head>
+<body>
+<h1>Ajouter une nouvelle image</h1>
+
+{% if ajout %}
+    <p>Image enregistrée.</p>
+{% endif %}
+
+<p>
+    <form method="post" enctype="multipart/form-data" action=".">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <input type="submit"/>
+    </form>
+</p>
+
+<p><a href="{% url 'index' %}#portfolio-lg">Voir modifications</a></p>
+</body>
+</html>

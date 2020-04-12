@@ -1,0 +1,31 @@
+.accueil-user{
+    margin-top: 100px;
+}
+
+.grid-content{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info-user, .info-inscription{
+    padding: 3px;
+    margin-top: 45px;
+}
+
+.info-user ul, .info-inscription ul{
+    list-style: none;
+}
+
+.inscriptions-link {
+    color: black!important;
+    border: solid 1px #007bff;
+}
+
+.inscriptions-link {
+    background-color: white!important;
+    font-weight: bold;
+}
+
+.inscriptions-link:hover {
+    background-color: #007bff!important;
+}
