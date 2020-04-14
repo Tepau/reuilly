@@ -67,7 +67,7 @@
     {% for image in images %}
     <div class="image">
         {{ image.nom }}
-        <img src="{{ image.photo }}">
+        <img src="{{ image.photo.url }}">
         <form method="post" action="{% url 'reuillytt:supprimerphoto'  %}">
         {% csrf_token %}
         <input type="hidden" name="id_photo" value="{{ image.id }}" >

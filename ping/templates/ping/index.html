@@ -191,7 +191,7 @@
       <div class="row">
         <div class="MagicScroll"  data-options="mode: cover-flow; height: 275px;">
             {% for photo in photos %}
-            <img  src="{{ photo.photo }}"/>
+            <img  src="{{ photo.photo.url }}"/>
             {% endfor %}
         </div>
       </div>
