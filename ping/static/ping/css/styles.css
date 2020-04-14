@@ -1,16 +1,15 @@
 @font-face {
   font-family: "Caviar Dreams";
-  src: url("/static/ping/fonts/CaviarDreams.ttf");
+  src: url("https://s3.console.aws.amazon.com/s3/buckets/reuillytt-media/static/ping/fonts/CaviarDreams.ttf");
 }
-
 @font-face {
   font-family: "Gilroy-Light";
-  src: url("/static/ping/fonts/Gilroy-Light.otf");
+  src: url("https://s3.console.aws.amazon.com/s3/buckets/reuillytt-media/static/ping/fonts/Gilroy-Light.otf");
 }
 
 @font-face {
   font-family: "Cabin-SemiBold";
-  src: url("/static/ping/fonts/Cabin-SemiBold-TTF.ttf");
+  src: url("https://s3.console.aws.amazon.com/s3/buckets/reuillytt-media/static/ping/fonts/Cabin-SemiBold-TTF.ttf");
 }
 
 
