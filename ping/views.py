@@ -32,7 +32,6 @@ def supprimerphoto(request):
         photo_a_supprimer = Image.objects.get(id=photo)
         photo_a_supprimer.delete()
 
-
     return render(request, 'ping/supprimerphoto.html', locals())
 
 
@@ -63,7 +62,6 @@ def connexion(request):
 def index(request):
     photos = Image.objects.all()
     return render(request, 'ping/index.html', locals())
-
 
 
 def creation(request):

@@ -2,17 +2,18 @@
     margin-top: 100px;
 }
 
-.grid-content{
+.grid-content {
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 }
 
-.info-user, .info-inscription{
+.info-user, .info-inscription {
     padding: 3px;
     margin-top: 45px;
+}
 
-.info-user ul, .info-inscription ul{
+.info-user ul, .info-inscription ul {
     list-style: none;
 }
 
