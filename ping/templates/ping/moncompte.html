@@ -105,16 +105,14 @@
                 </div>
                 {% endif %}
             </ul>
-
         </div>
-
-        {% if perms.ping.add_image %}
-          <div class="administrateur text-right mr-2">
-              <a href="{% url 'reuillytt:photo' %}">Ajouter photo</a>
-              <a href="{% url 'reuillytt:supprimerphoto' %}">Supprimer photo</a>
-          </div>
-        {% endif %}
     </div>
+    {% if perms.ping.add_image %}
+          <div class="administrateur text-center mt-5">
+              <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:photo' %}">Ajouter photo</a>
+              <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:supprimerphoto' %}">Supprimer photo</a>
+          </div>
+    {% endif %}
 
 
 

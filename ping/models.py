@@ -48,7 +48,7 @@ class User(AbstractUser):
 
 class Image(models.Model):
     nom = models.CharField(max_length=100, unique=True)
-    photo = models.ImageField(upload_to="photos/")
+    photo = models.ImageField()
 
 
 class Adresse(models.Model):
