@@ -165,9 +165,7 @@ DATABASES['default'].update(db_from_env)
 django_heroku.settings(locals())
 
 
-AWS_ACCESS_KEY_ID = 'AKIAUERIDWMJMWA5SKJW'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'reuillytt-media'
+
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
