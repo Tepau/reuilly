@@ -156,8 +156,6 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
-# Extra places for collectstatic to find static files.
-
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -165,6 +163,9 @@ DATABASES['default'].update(db_from_env)
 django_heroku.settings(locals())
 
 if os.environ.get('ENV') == 'PRODUCTION':
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % os.environ.get('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
