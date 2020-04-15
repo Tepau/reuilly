@@ -78,6 +78,7 @@ def creation(request):
             prenom = user_form.cleaned_data["first_name"]
             if User.objects.filter(email=email):
                 compte_existant = True
+                print("true")
 
             else:
                 val = {
