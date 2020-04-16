@@ -146,9 +146,7 @@ footer a {
     color: #212529;
 }
 
-header{
-    position: relative;
-}
+
 
 .header-buttons{
     position: absolute;
@@ -162,34 +160,33 @@ header{
         margin-top: 3em;
 
     }
-/* HEADER */
 
+/* HEADER */
 header{
   text-align: center;
   color: white;
-  background: url("../img/fond_reuilly.jpg");
+  background: url("../img/fond_reuilly3.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
   height: 90vh;
+  margin-top: 60px;
+  position: relative;
 }
-
-
 
 #map{
    height:400px;
    width: 100%;
 }
 
-
 #sous-titre{
     font-size: 2.3em;
 }
+
  .icons{
     height: 60px;
-
- }
+}
 
 .intro-description {
     color: white;
@@ -199,11 +196,6 @@ header{
 
 #nom-club {
     font-size: 2.5em;
-
-}
-
-header {
-    margin-top: 60px;
 }
 
 #titre-actualites{
@@ -211,8 +203,8 @@ header {
 }
 
 .actus {
-        text-align: center;
-   }
+    text-align: center;
+}
 
 .agenda {
    margin-bottom: 15px;
@@ -232,10 +224,11 @@ header {
     .intro-description{
         font-size: 2em;
     }
+
     #nom-club  {
         padding-top: 160px;
-
     }
+
     .titre-club {
         font-size: 2.2em;
     }
@@ -296,14 +289,12 @@ header {
         padding-top: 150px;
     }
 
-
     .titre-section {
         display: flex;
     }
 
     .description-section  {
         margin-top: 75px;
-
     }
 
 }
@@ -320,12 +311,7 @@ header {
     #navbarSupportedContent {
         justify-content: flex-start!important;
     }
-
-
 }
-
-
-
 
 @media only screen and (min-width:992px) {
 
@@ -364,8 +350,6 @@ header {
     .logo {
         height: 90px;
     }
-
-
 
 }
 
