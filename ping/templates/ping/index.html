@@ -285,12 +285,13 @@
   </section>
   {% endblock %}
     <footer>
-        <div class="container-fluid ">
+        <hr class="hr-footer">
+        <div class="container text-center">
+            <p>Espérance Reuilly TT - 26 Blvd Carnot - 75012 - Paris</p>
             <hr>
-            <div class="footer-nav d-flex">
-                    <img src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"/>
-                    <p class="footer-text">Copyright © 2019-2020 - Tous droits réservés.</p>
-                    <p class="mentions footer-text">Mentions Légales</p>
+            <div class="d-flex justify-content-center mb-2">
+                <a class="text-decoration-none" href="{% url 'reuillytt:mentions' %}">Mentions Légales</a>
+                <a class="text-decoration-none ml-3" href="{% url 'reuillytt:cgu' %}">CGU</a>
             </div>
         </div>
     </footer>
