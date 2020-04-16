@@ -182,3 +182,4 @@ if os.environ.get('ENV') == 'PRODUCTION':
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
     DEFAULT_FILE_STORAGE = 'site_reuilly.storage_backends.MediaStorage'  # <-- here is where we reference it
+
