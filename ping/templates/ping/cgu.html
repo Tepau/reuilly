@@ -1,0 +1,135 @@
+{% extends 'ping/liens.html' %}
+{% load static %}
+{% block title %}Historique{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
+    <link href="{% static 'ping/css/mentions.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:historique' %}">Historique</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Connexion</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container mentions">
+    <h2>CGU</h2>
+    <div class="text-center">
+        <h4 class="mt-4 mb-4">La notice</h4>
+        <p>La notice ci-dessous définit les termes et conditions générales du site. Veuillez lire attentivement cette
+            notice. En accédant au site de l'Espérance Reuilly TT', en le consultant ou en l’utilisant, tous les
+            utilisateurs et les lecteurs acceptent les termes et conditions générales définis dans cette notice
+        </p>
+        <h4 class="mt-4 mb-4">Discrimination</h4>
+        <p>Notre association travaille en conformité avec les règles de déontologie de notre profession et les
+            dispositions légales en matière de traitement des données personnelles des candidats afin de prévenir
+            tout risque de discrimination. De ce fait, un effort a été fait quant à l'utilisation de l'écriture inclusive ,
+            toutefois certaines fonctions et titres sont présentés à titre générique au masculin.</p>
+        <h4 class="mt-4 mb-4">Conditions d'utilisation du site</h4>
+        <p>
+            En aucun cas l'Espérance Reuilly TT et ses fournisseurs ne pourront être responsable de tout dommage
+            direct ou indirect, matériel ou immatériel de toute nature, relatifs à ou résultant de votre utilisation
+            du site, de l’information fournie ou que vous avez fourni sur le site, ou de toute transaction relative à ou
+            résultant de votre utilisation du site, y compris toute pertes de bénéfice, de chance, tout préjudice
+            commercial, perte d’image, de données ou d’usage du site.
+        </p>
+        <p>Le site peut comporter des liens, tels que des liens hypertexte ou des boutons, permettant l’accès à des
+            sites Internet de tiers. Ces Sites  ne sont ni sous le contrôle, ni vérifiés par l'Espérance Reuilly TT.
+            L'Espérance Reuilly TT  ne peut être tenue pour responsable des produits, des informations, du contenu
+            figurant sur les Sites partenaires.</p>
+        <h4 class="mt-4 mb-4">Propriété intellectuelle</h4>
+        <p>
+            Ce site internet est la propriété exclusive de l'Espérance Reuilly TT, protégé par la législation française et
+            internationale sur le droit de la propriété intellectuelle. Aucune reproduction ou représentation ne peut
+            être réalisée.
+        </p>
+        <p>
+            L'Espérance Reuilly TT se réserve le droit de modifier le contenu de ce site de toutes les façons que ce
+            soit, à tout moment et sans préavis
+        </p>
+        <h4 class="mt-4 mb-4">Données personnelles</h4>
+        <p>
+            Dans le cadre du traitement de votre inscription, l'Espérance Reuilly TT sera susceptible de transférer
+            tout ou partie de vos données personnelles à la Fédération Française de Tennis de Table.
+        </p>
+        <p>
+            Votre dossier personnel, constitué de l’ensemble des informations vous concernant, sera supprimé de la base
+            de données informatique de l'Espérance Reuilly TT sur simple demande de votre part ou dans un délai de 48
+            mois à compter de la date de fin de votre dernière inscription.
+        </p>
+        <p>
+            En renseignant vos données personnelles, vous consentez à leurs utilisations. Vous acceptez ainsi que
+            l'Espérance Reuilly TT vous contacte en utilisant votre compte Générationnel ou d’autres moyens
+            mis à notre disposition (email, téléphone etc.).
+        </p>
+        <p>
+            En vous inscivant sur notre site, vous vous engagez à fournir des informations réelles et sincères.
+        </p>
+        <p>
+            Conformément à la loi « informatique et libertés » du 6 Janvier 1978, ce site a fait l’objet d’une
+            déclaration auprès de la Commission Nationale de l’Informatique et des Libertés (CNIL). Vous disposez d’un
+            droit d’accès et de rectification des informations qui vous concernent, que vous pouvez exercer en vous
+            adressant à : Espérance Reuilly, 26 Boulevard Carnot 75012 Paris
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block JavaScript %}
+
+{% endblock %}

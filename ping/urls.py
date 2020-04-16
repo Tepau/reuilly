@@ -16,5 +16,8 @@ urlpatterns = [
     url(r'^photo/$', views.photo, name='photo'),
     url(r'^supprimerphoto/$', views.supprimerphoto, name='supprimerphoto'),
     url(r'^creation/$', views.creation, name='creation'),
+    url(r'^mentions/$', views.Mentions.as_view(), name='mentions'),
+    url(r'^cgu/$', views.Cgu.as_view(), name='cgu'),
+
 ]
 

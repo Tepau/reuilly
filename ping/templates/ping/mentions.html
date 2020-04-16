@@ -1,0 +1,95 @@
+{% extends 'ping/liens.html' %}
+{% load static %}
+{% block title %}Historique{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
+    <link href="{% static 'ping/css/mentions.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:historique' %}">Historique</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Connexion</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container mentions">
+    <h2>Mentions légales</h2>
+    <div>
+        <p class="text-justify">
+            Les données que vous venez de communiquer font l’objet d’un traitement automatisé par l'Espérance Reuilly TT
+            Paris ayant son siège social au 26 Boulevard Carnot 75012 Paris.
+        </p>
+        <p class="text-justify">
+            Ce traitement de données est nécessaire à l’exécution de votre inscription. La personne en charge de la
+            protection des données peut être contactée à l’adresse email suivante reuillytt@gmail.fr
+        </p>
+        <p class="text-justify">Les données seront conservées jusqu'à deux ans après la dernière inscription à l'Espérance de Reuilly.
+            Les destinataires des données sont membres du Comité Directeur de l'Espérance de Reuilly. Dans le
+            cadre de ses opérations de traitement, le responsable de traitement s’engage à ne pas transférer vos données
+            personnelles en dehors de l’Union européenne. Vous disposez d’un droit d’accès, de rectification, et en cas de
+            motifs légitimes de suppression, de limitation et d’opposition au traitement de vos données. Vous bénéficiez
+            également du droit à la portabilité de vos données et de la possibilité de donner des directives concernant
+            vos données, en cas de décès. Vous pouvez exercer ces droits en adressant un email à l’adresse
+            reuillytt@gmail.com. S’il ne vous était pas donné satisfaction, vous avez la possibilité de saisir la CNIL.
+        </p>
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block JavaScript %}
+
+{% endblock %}
