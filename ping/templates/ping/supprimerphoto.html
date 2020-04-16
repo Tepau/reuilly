@@ -66,7 +66,7 @@
 <div class="container-fluid grid-images">
     {% for image in images %}
     <div class="image">
-        {{ image.nom }}
+        <h4>{{ image.nom }}</h4>
         <img src="{{ image.photo.url }}">
         <form method="post" action="{% url 'reuillytt:supprimerphoto'  %}">
         {% csrf_token %}
