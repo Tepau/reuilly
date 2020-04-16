@@ -3,7 +3,7 @@
 {% block title %}Ajout Photo{% endblock %}
 {% block head %}
     <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
-    <link href="{% static 'ping/css/supprimerphoto.css' %}" rel="stylesheet">
+    <link href="{% static 'ping/css/ajoutphoto.css' %}" rel="stylesheet">
 {% endblock %}
 {% block navbar %}
 <nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
@@ -62,21 +62,25 @@
 
 {% block content %}
 
-<h1>Ajouter une nouvelle image</h1>
+<div class="container ajout">
+    <h1>Ajouter une nouvelle image</h1>
 
-{% if ajout %}
-    <p>Image enregistrée.</p>
-{% endif %}
+    {% if ajout %}
+        <p>Image enregistrée.</p>
+    {% endif %}
 
-<p>
-    <form method="post" enctype="multipart/form-data" action=".">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <input type="submit"/>
-    </form>
-</p>
+    <p>
+        <form method="post" enctype="multipart/form-data" action=".">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <input type="submit"/>
+        </form>
+    </p>
 
-<p><a href="{% url 'index' %}#portfolio-lg">Voir modifications</a></p>
+    <p><a href="{% url 'index' %}#portfolio-lg">Voir modifications</a></p>
+
+</div>
+
 
 {% endblock %}
 
