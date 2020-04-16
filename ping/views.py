@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -9,6 +10,8 @@ from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
 
+
+@staff_member_required
 def photo(request):
     ajout = False
     form = NouvellePhotoForm(request.POST or None, request.FILES)
@@ -23,6 +26,8 @@ def photo(request):
     form = NouvellePhotoForm()
     return render(request, 'ping/photo.html', locals())
 
+
+@staff_member_required
 def supprimerphoto(request):
 
     images = Image.objects.all()

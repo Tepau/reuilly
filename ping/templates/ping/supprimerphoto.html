@@ -65,7 +65,7 @@
 <body>
 <div class="container-fluid grid-images">
     {% for image in images %}
-    <div class="image">
+    <div class="image text-center">
         <h4>{{ image.nom }}</h4>
         <img src="{{ image.photo.url }}" class="h-auto mw-100">
         <form method="post" action="{% url 'reuillytt:supprimerphoto'  %}">
@@ -76,8 +76,6 @@
     </div>
     {% endfor %}
 </div>
-
-<p><a href="{% url 'index' %}#portfolio-lg">Voir modifications</a></p>
 
 {% endblock %}
 
