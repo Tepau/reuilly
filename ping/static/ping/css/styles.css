@@ -100,6 +100,9 @@ body {
     grid-gap: 40px;
 }
 
+#actualites, #partenaires {
+    background-color : #212529;
+}
 
 
 .description-section{
@@ -320,7 +323,9 @@ header{
         font-family: Cabin-SemiBold;
     }
 
-
+    #actualites, #partenaires {
+        background-color : white;
+    }
 
     #nom-club {
         font-size: 4em;
