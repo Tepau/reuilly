@@ -142,6 +142,10 @@ footer img{
     margin-left: auto;
 }
 
+footer a {
+    color: #212529;
+}
+
 header{
     position: relative;
 }
