@@ -67,11 +67,11 @@
     {% for image in images %}
     <div class="image text-center">
         <h4>{{ image.nom }}</h4>
-        <img src="{{ image.photo.url }}" class="h-auto mw-100">
+        <img src="{{ image.photo.url }}" class="mw-100">
         <form method="post" action="{% url 'reuillytt:supprimerphoto'  %}">
         {% csrf_token %}
         <input type="hidden" name="id_photo" value="{{ image.id }}" >
-        <button type="submit">Supprimer</button>
+        <button type="submit" class="mt-4">Supprimer</button>
         </form>
     </div>
     {% endfor %}
