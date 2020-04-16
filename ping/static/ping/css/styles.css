@@ -100,11 +100,6 @@ body {
     grid-gap: 40px;
 }
 
-#actualites, #partenaires {
-    background-color : #212529;
-}
-
-
 .description-section{
     font-family: Gilroy, 'Caviar Dreams';
     margin-bottom: 70px;
@@ -149,8 +144,6 @@ footer a {
     color: #212529;
 }
 
-
-
 .header-buttons{
     position: absolute;
     bottom: 100px;
@@ -162,7 +155,7 @@ footer a {
         font-size: 1.8em;
         margin-top: 3em;
 
-    }
+}
 
 /* HEADER */
 header{
@@ -194,7 +187,6 @@ header{
 .intro-description {
     color: white;
     text-shadow: #151209 1px 0 10px;
-
 }
 
 #nom-club {
@@ -215,6 +207,10 @@ header{
 
 .facebook{
    width: 100%;
+}
+
+.hr-footer{
+    border: 1px solid black;
 }
 
 /* iPhone 6, 7, & 8 in portrait */
@@ -323,9 +319,7 @@ header{
         font-family: Cabin-SemiBold;
     }
 
-    #actualites, #partenaires {
-        background-color : white;
-    }
+
 
     #nom-club {
         font-size: 4em;
