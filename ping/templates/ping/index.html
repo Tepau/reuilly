@@ -189,7 +189,7 @@
   <section class="page-section pb-5" id="portfolio-lg">
       <div class="description-section"></div>
       <div class="row">
-        <div class="MagicScroll"  data-options="mode: cover-flow; height: 400px;">
+        <div class="MagicScroll"  data-options="mode: cover-flow; height: 600px;">
             {% for photo in photos %}
             <img  src="{{ photo.photo.url }}"/>
             {% endfor %}
@@ -248,7 +248,7 @@
               </div>
               <div class="row text-center mt-5">
                 <div class="col-lg-12 d-flex flex-column">
-                  <i class="renseignement">Métro : Porte de vincennes (L.1)</i>
+                  <i class="renseignement">Métro : Porte de Vincennes (L.1)</i>
                   <i class="renseignement">Tramway : Alexandra David-Néel (T.3a)</i>
                   <i class="renseignement">Bus : Porte de Saint-Mandé (29, 56)</i>
                 </div>
@@ -262,10 +262,6 @@
   </section>
 
 
-
-
-
-
   <!-- Partenaires Grid -->
   <section class="page-section" id="partenaires">
     <div class="container-fluid">
@@ -276,11 +272,11 @@
 
       </div>
       <div class="grid-partenaires container">
-          <a href="https://www.generationnel.fr/"><img src="{% static 'ping/img/generationnel.jpg' %}" class="h-auto mw-100"></a>
-          <a href="https://www.andro.de/produkte/"><img src="{% static 'ping/img/andro.png' %}" class="h-auto mw-100"></a>
-          <a href="https://www.wsport.com/"><img src="{% static 'ping/img/wack.jpg' %}" class="h-auto mw-100"></a>
-          <a href="https://www.stationforme.com/"><img src="{% static 'ping/img/station-forme.jpg' %}" class="h-auto mw-100"></a>
-          <a href="https://www.creditmutuel.fr/home/index.html"><img src="{% static 'ping/img/creditmutuel.png' %}" class="h-auto mw-100"></a>
+          <a href="https://www.generationnel.fr/" target="_blank"><img src="{% static 'ping/img/generationnel.jpg' %}" class="h-auto mw-100"></a>
+          <a href="https://www.andro.de/produkte/" target="_blank"><img src="{% static 'ping/img/andro.png' %}" class="h-auto mw-100"></a>
+          <a href="https://www.wsport.com/"  target="_blank"><img src="{% static 'ping/img/wack.jpg' %}" class="h-auto mw-100"></a>
+          <a href="https://www.stationforme.com/" target="_blank"><img src="{% static 'ping/img/station-forme.jpg' %}" class="h-auto mw-100"></a>
+          <a href="https://www.creditmutuel.fr/home/index.html" target="_blank"><img src="{% static 'ping/img/creditmutuel.png' %}" class="h-auto mw-100"></a>
       </div>
   </section>
   {% endblock %}
