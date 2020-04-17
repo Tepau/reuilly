@@ -83,7 +83,7 @@ def creation(request):
             prenom = user_form.cleaned_data["first_name"]
             if User.objects.filter(email=email):
                 compte_existant = True
-                print("true")
+
 
             else:
                 val = {
@@ -102,7 +102,7 @@ def creation(request):
     return render(request, 'ping/creation.html', locals())
 
 
-@login_required(login_url='/reuillytt/connexion/')
+@login_required(login_url='reuillytt:connexion')
 def inscription(request):
 
     inscrit = False
@@ -113,7 +113,6 @@ def inscription(request):
         form = AdherentForm(request.POST)
         if form.is_valid():
             user = User.objects.get(id=request.user.id)
-            print(user)
             date_naissance = form.cleaned_data['date_naissance']
             telephone = form.cleaned_data['telephone']
             voie = form.cleaned_data['adresse']
@@ -226,7 +225,7 @@ def inscription(request):
     return render(request, 'ping/inscription.html', locals())
 
 # Access information account
-@login_required(login_url='ping:connexion')  # redirect when user is not logged in
+@login_required(login_url='reuillytt:connexion')  # redirect when user is not logged in
 def account(request):
     saisons = Saison.objects.all()
     for saison in saisons:
