@@ -235,6 +235,7 @@ def account(request):
             inscrit = True
             inscription = Inscription.objects.get(joueur=joueur, saison=saison_actuelle)
             prix_cotisation = inscription.cotisation.prix
+            nom_cotisation = inscription.cotisation.nom
             prix_competition = []
             if len(inscription.competition.all()) == 0:
                 prix_competition = 0

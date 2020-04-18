@@ -30,3 +30,8 @@
 .inscriptions-link:hover {
     background-color: #007bff!important;
 }
+
+.urgent {
+    color: red;
+
+}

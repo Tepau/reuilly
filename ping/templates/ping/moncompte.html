@@ -90,16 +90,24 @@
             <h4 class="text-center mb-2">Inscription</h4>
             <ul>
                 {% if inscrit %}
-                <li>Tu as une inscription en cours pour la saison {{ saison_actuelle.nom }}</li>
-                <li>Coût de l'inscription : {{ prix_total }}€</li>
-                <li>Paiement effectué : {% if paiement %} OUI {% else %} NON {% endif %}</li>
-                {% if competition %}
-                <li>Compétitons Séléctionnées : {% for compet in mes_competitions %} {{ compet.nom|upper }} {% endfor %} </li>
-                {% endif %}
 
-                <li>Ton inscription prendra fin le {{ saison_actuelle.date_fin_saison }}</li>
+                    {% if not paiement %}
+                    <li class="urgent"><strong>Ton inscription pour la saison {{ saison_actuelle.nom }} sera définitive après le paiement</strong></li>
+                    <li class="urgent"><strong>Coût de l'inscription : {{ prix_total }}€</strong></li>
+                    {% else %}
+                    <li>Tu as une inscription en cours pour la saison {{ saison_actuelle.nom }}</li>
+                    {% endif %}
+                    <li>Cotisation : {{ nom_cotisation|capfirst }}</li>
+                    {% if competition %}
+                    <li>Compétitons Séléctionnées : {% for compet in mes_competitions %} {{ compet.nom|upper }} {% endfor %} </li>
+                    {% endif %}
+
+                    <li>Ton inscription prendra fin le {{ saison_actuelle.date_fin_saison }}</li>
+
                 {% else %}
-                <li>Tu n'as pas d'inscrption en cours pour la saison {{ saison_actuelle.nom }}</li>
+
+                    <li>Tu n'as pas d'inscrption en cours pour la saison {{ saison_actuelle.nom }}</li>
+
                 <div class="text-center mt-4">
                     <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger inscriptions-link " href="{% url 'reuillytt:inscription' %}">Nouvelle Inscription</a>
                 </div>

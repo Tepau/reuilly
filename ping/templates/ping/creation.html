@@ -51,7 +51,7 @@
             <li class="moncompte">
                 {% if user.is_authenticated %}
                 <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
-                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt"></i></a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
                 {% else %}
                 <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Mon Compte</a>
                 {% endif %}

@@ -109,32 +109,6 @@ class CreationComptePageTestCase(TestCase):
         self.assertEqual(User.objects.count(), user_count+1)
 
 
-class InscriptionPageTestCase(TestCase):
-
-    def setUp(self):
-        self.client = Client()
-        self.user = get_user_model().objects.create_user(email='test@test.com', password='mot_de_passe')
-        self.competition = Competition.objects.create(nom="fscf", prix=25, description="compet")
-        self.cotisation = Cotisation.objects.create(nom="adulte loisir", prix=145, description="adulte loisir")
-        self.client = Client()
-
-    def test_inscription_is_ok(self):
-        self.client.login(email='test@test.com', password='mot_de_passe')
-        inscription_count = Inscription.objects.count()
-        data = {
-            'date_naissance': '2001-01-10',
-            'adresse': '40 rue de la voute',
-            'ville': 'paris',
-            'telephone': '01234672772',
-            'code_postal': '75012',
-            'pays': 'france',
-            'forfait': 'adulte loisir',
-            'competitions': 'fscf',
-        }
-        response = self.client.post(reverse('reuillytt:inscription'), data)
-        self.assertEqual(Inscription.objects.count(), inscription_count+1)
-
-
 
 
 
