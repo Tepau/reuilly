@@ -137,18 +137,13 @@ def inscription(request):
                     else:
                         adresse = Adresse.objects.get_or_create(voie=voie, ville=ville, code_postal=code_postal,
                                                                 pays=pays)
-
                         cotisation = Cotisation.objects.filter(nom=forfait)[0]
-
                         joueur = Joueur.objects.get(user=user)
                         joueur.adresse = adresse
                         joueur.save()
-
                         inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation,
                                                                  joueur=joueur)
-
                         montant = [cotisation.prix]
-
                         competition = []
 
                         if len(competitions) > 0:
@@ -168,8 +163,6 @@ def inscription(request):
                             val = {
                                 'prenom': joueur.user.first_name,
                                 'saison': saison_actuelle.nom,
-
-
                             }
 
                             html_message = render_to_string('ping/email_cotisation.html', val)

@@ -31,7 +31,6 @@ class UserForm(forms.Form):
         return cleaned_data
 
 
-
 class AdherentForm(forms.Form):
     COMPETITIONS = []
     COTISATIONS = []
