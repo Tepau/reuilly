@@ -91,9 +91,7 @@ def creation(request):
                 }
                 html_message = render_to_string('ping/email.html', val)
                 plain_message = strip_tags(html_message)
-                send_mail("Bienvenue à l'Espérance de Reuilly", plain_message, settings.EMAIL_HOST_USER, [email],
-                          fail_silently=False, html_message=html_message)
-                user = User.objects.create_user(email, password)
+                send_mail("Bienvenue à l'Espérance de Reuilly", plain_message, settings.EMAIL_HOST_USER, [email], fail_silently=False, html_message=html_message)
                 user = User.objects.create_user(email, password)
                 user.first_name = prenom
                 user.last_name = nom
@@ -121,10 +119,8 @@ def inscription(request):
             code_postal = form.cleaned_data['code_postal']
             ville = form.cleaned_data['ville']
             pays = form.cleaned_data['pays']
-            forfaits = form.cleaned_data['forfait']
-            forfait = forfaits[0:forfaits.find('&') - 1]
+            forfait = form.cleaned_data['forfait']
             competitions = form.cleaned_data['competitions']
-
 
 
             saisons = Saison.objects.all()
@@ -152,16 +148,14 @@ def inscription(request):
 
                         if len(competitions) > 0:
                             if len(competitions) == 1:
-                                ma_competition = competitions[0][0:competitions[0].find('&')-1]
-                                competitions_selectionnee = Competition.objects.filter(nom=ma_competition[0])[0]
+                                competitions_selectionnee = Competition.objects.filter(nom=competitions[0])[0]
                                 inscription.competition.add(competitions_selectionnee)
                                 montant.append(competitions_selectionnee.prix)
                                 competition = [competitions_selectionnee.nom]
 
                             elif len(competitions) == 2:
                                 for compet in competitions:
-                                    ma_competition = compet[0:compet.find('&') - 1]
-                                    competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+                                    competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                                     inscription.competition.add(competitions_selectionnee)
                                     montant.append(competitions_selectionnee.prix)
                                     competition.append(competitions_selectionnee.nom)
@@ -173,10 +167,8 @@ def inscription(request):
 
                             html_message = render_to_string('ping/email_cotisation.html', val)
                             plain_message = strip_tags(html_message)
-                            send_mail("Inscription saison " + saison_actuelle.nom, plain_message,
-                                      settings.EMAIL_HOST_USER,
-                                      [joueur.user.email], fail_silently=False, html_message=html_message)
-
+                            send_mail("Inscription saison " + saison_actuelle.nom, plain_message, settings.EMAIL_HOST_USER,
+                                        [joueur.user.email], fail_silently=False, html_message=html_message)
 
                         return redirect('reuillytt:moncompte')
 
@@ -197,16 +189,14 @@ def inscription(request):
 
                 if len(competitions) > 0:
                     if len(competitions) == 1:
-                        ma_competition = competitions[0][0:competitions[0].find('&') - 1]
-                        competitions_selectionnee = Competition.objects.filter(nom=ma_competition[0])[0]
+                        competitions_selectionnee = Competition.objects.filter(nom=competitions[0])[0]
                         inscription.competition.add(competitions_selectionnee)
                         montant.append(competitions_selectionnee.prix)
                         competition = [competitions_selectionnee.nom]
 
                     elif len(competitions) > 1:
                         for compet in competitions:
-                            ma_competition = compet[0:compet.find('&') - 1]
-                            competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+                            competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                             inscription.competition.add(competitions_selectionnee)
                             montant.append(competitions_selectionnee.prix)
                             competition.append(competitions_selectionnee.nom)
@@ -215,13 +205,13 @@ def inscription(request):
                 val = {
                     'prenom': joueur.user.first_name,
                     'saison': saison_actuelle.nom,
+
                 }
 
                 html_message = render_to_string('ping/email_cotisation.html', val)
                 plain_message = strip_tags(html_message)
                 send_mail("Inscription saison " + saison_actuelle.nom, plain_message, settings.EMAIL_HOST_USER,
-                          [joueur.user.email], fail_silently=False, html_message=html_message)
-
+                            [joueur.user.email], fail_silently=False, html_message=html_message)
 
                 return redirect('reuillytt:moncompte')
 
