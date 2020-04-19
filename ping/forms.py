@@ -37,12 +37,12 @@ class AdherentForm(forms.Form):
 
     competitions = Competition.objects.all()
     for competition in competitions:
-        compet = (competition.nom, competition.nom + " " + str(competition.prix) + "€")
+        compet = (competition.nom + " & " + competition.prix, competition.nom + " " + str(competition.prix) + "€")
         COMPETITIONS.append(compet)
 
     cotisations = Cotisation.objects.all()
     for cotisation in cotisations:
-        cotis = (cotisation.nom, cotisation.nom + " " + str(cotisation.prix) + "€")
+        cotis = (cotisation.nom + " & " + cotisation.prix, cotisation.nom + " " + str(cotisation.prix) + "€")
         COTISATIONS.append(cotis)
 
     date_naissance = forms.DateField(label='Date de Naissance', widget=forms.DateInput(attrs={'type':'date', 'class':'datepicker'}))
