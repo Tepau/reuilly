@@ -149,8 +149,8 @@ def inscription(request):
 
                         if len(competitions) > 0:
                             if len(competitions) == 1:
-                                competition = competitions[0:competitions.find('&') - 1]
-                                competitions_selectionnee = Competition.objects.filter(nom=competition[0])[0]
+                                ma_competition = competitions[0:competitions.find('&') - 1]
+                                competitions_selectionnee = Competition.objects.filter(nom=ma_competition[0])[0]
                                 inscription.competition.add(competitions_selectionnee)
                                 montant.append(competitions_selectionnee.prix)
                                 competition = [competitions_selectionnee.nom]
