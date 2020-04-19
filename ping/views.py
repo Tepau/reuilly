@@ -157,12 +157,11 @@ def inscription(request):
 
                             elif len(competitions) > 1:
                                 for compets in competitions:
-                                    compet = competitions[0:competitions.find('&') - 1]
+                                    compet = compets[0:compets.find('&') - 1]
                                     competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                                     inscription.competition.add(competitions_selectionnee)
                                     montant.append(competitions_selectionnee.prix)
                                     competition.append(competitions_selectionnee.nom)
-                                    print(compet)
 
                             val = {
                                 'prenom': joueur.user.first_name,
