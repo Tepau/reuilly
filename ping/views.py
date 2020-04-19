@@ -119,8 +119,7 @@ def inscription(request):
             code_postal = form.cleaned_data['code_postal']
             ville = form.cleaned_data['ville']
             pays = form.cleaned_data['pays']
-            forfaits = form.cleaned_data['forfait']
-            forfait = forfaits[0:forfaits.find('&')-1]
+            forfait = form.cleaned_data['forfait']
             competitions = form.cleaned_data['competitions']
 
 
@@ -149,16 +148,14 @@ def inscription(request):
 
                         if len(competitions) > 0:
                             if len(competitions) == 1:
-                                ma_competition = competitions[0][0:competitions[0].find('&')-1]
-                                competitions_selectionnee = Competition.objects.filter(nom=ma_competition[0])[0]
+                                competitions_selectionnee = Competition.objects.filter(nom=competitions[0])[0]
                                 inscription.competition.add(competitions_selectionnee)
                                 montant.append(competitions_selectionnee.prix)
                                 competition = [competitions_selectionnee.nom]
 
-                            elif len(competitions) > 1:
+                            elif len(competitions) == 2:
                                 for compet in competitions:
-                                    ma_competition = compet[0:compet.find('&')-1]
-                                    competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+                                    competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                                     inscription.competition.add(competitions_selectionnee)
                                     montant.append(competitions_selectionnee.prix)
                                     competition.append(competitions_selectionnee.nom)
