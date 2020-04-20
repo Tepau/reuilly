@@ -29,7 +29,6 @@ def photo(request):
 
 @permission_required('ping.remove_photo', login_url='/')
 def supprimerphoto(request):
-
     images = Image.objects.all()
 
     if request.method == 'POST':
@@ -70,7 +69,7 @@ def index(request):
 
 
 def creation(request):
-    compte_existant= False
+    compte_existant = False
     user_form = UserForm(request.POST or None)
 
     if request.method == "POST":
@@ -91,7 +90,8 @@ def creation(request):
                 }
                 html_message = render_to_string('ping/email.html', val)
                 plain_message = strip_tags(html_message)
-                send_mail("Bienvenue à l'Espérance de Reuilly", plain_message, settings.EMAIL_HOST_USER, [email], fail_silently=False, html_message=html_message)
+                send_mail("Bienvenue à l'Espérance de Reuilly", plain_message, settings.EMAIL_HOST_USER, [email],
+                          fail_silently=False, html_message=html_message)
                 user = User.objects.create_user(email, password)
                 user.first_name = prenom
                 user.last_name = nom
@@ -104,7 +104,6 @@ def creation(request):
 
 @login_required(login_url='reuillytt:connexion')
 def inscription(request):
-
     inscrit = False
     form = AdherentForm(request.POST or None)
 
@@ -119,9 +118,9 @@ def inscription(request):
             code_postal = form.cleaned_data['code_postal']
             ville = form.cleaned_data['ville']
             pays = form.cleaned_data['pays']
-            forfait = form.cleaned_data['forfait']
+            forfaits = form.cleaned_data['forfait']
+            forfait = forfaits[0:forfaits.find('&') - 1]
             competitions = form.cleaned_data['competitions']
-
 
             saisons = Saison.objects.all()
             for saison in saisons:
@@ -130,47 +129,42 @@ def inscription(request):
                         saison_actuelle = saison
 
             if len(Joueur.objects.filter(user=user)) == 1:
+                joueur = Joueur.objects.get(user=user)
+                if len(Inscription.objects.filter(joueur=joueur, saison=saison_actuelle)) == 1:
+                    inscrit = True
+
+                else:
+                    adresse = Adresse.objects.get_or_create(voie=voie, ville=ville, code_postal=code_postal,
+                                                            pays=pays)
+                    cotisation = Cotisation.objects.filter(nom=forfait)[0]
                     joueur = Joueur.objects.get(user=user)
-                    if len(Inscription.objects.filter(joueur=joueur, saison=saison_actuelle)) == 1:
-                        inscrit = True
+                    joueur.adresse = adresse
+                    joueur.save()
+                    inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation,
+                                                             joueur=joueur)
+                    montant = [cotisation.prix]
+                    competition = []
 
-                    else:
-                        adresse = Adresse.objects.get_or_create(voie=voie, ville=ville, code_postal=code_postal,
-                                                                pays=pays)
-                        cotisation = Cotisation.objects.filter(nom=forfait)[0]
-                        joueur = Joueur.objects.get(user=user)
-                        joueur.adresse = adresse
-                        joueur.save()
-                        inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation,
-                                                                 joueur=joueur)
-                        montant = [cotisation.prix]
-                        competition = []
+                    if len(competitions) > 0:
 
-                        if len(competitions) > 0:
-                            if len(competitions) == 1:
-                                competitions_selectionnee = Competition.objects.filter(nom=competitions[0])[0]
-                                inscription.competition.add(competitions_selectionnee)
-                                montant.append(competitions_selectionnee.prix)
-                                competition = [competitions_selectionnee.nom]
+                        for compet in competitions:
+                            ma_competition = compet[0:compet.find('&') - 1]
+                            competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+                            inscription.competition.add(competitions_selectionnee)
+                            montant.append(competitions_selectionnee.prix)
+                            competition.append(competitions_selectionnee.nom)
 
-                            elif len(competitions) == 2:
-                                for compet in competitions:
-                                    competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
-                                    inscription.competition.add(competitions_selectionnee)
-                                    montant.append(competitions_selectionnee.prix)
-                                    competition.append(competitions_selectionnee.nom)
+                        val = {
+                            'prenom': joueur.user.first_name,
+                            'saison': saison_actuelle.nom,
+                        }
 
-                            val = {
-                                'prenom': joueur.user.first_name,
-                                'saison': saison_actuelle.nom,
-                            }
+                        html_message = render_to_string('ping/email_cotisation.html', val)
+                        plain_message = strip_tags(html_message)
+                        send_mail("Inscription saison " + saison_actuelle.nom, plain_message, settings.EMAIL_HOST_USER,
+                                  [joueur.user.email], fail_silently=False, html_message=html_message)
 
-                            html_message = render_to_string('ping/email_cotisation.html', val)
-                            plain_message = strip_tags(html_message)
-                            send_mail("Inscription saison " + saison_actuelle.nom, plain_message, settings.EMAIL_HOST_USER,
-                                        [joueur.user.email], fail_silently=False, html_message=html_message)
-
-                        return redirect('reuillytt:moncompte')
+                    return redirect('reuillytt:moncompte')
 
             else:
 
@@ -188,19 +182,13 @@ def inscription(request):
                 competition = []
 
                 if len(competitions) > 0:
-                    if len(competitions) == 1:
-                        competitions_selectionnee = Competition.objects.filter(nom=competitions[0])[0]
+
+                    for compet in competitions:
+                        ma_competition = compet[0:compet.find('&') - 1]
+                        competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
                         inscription.competition.add(competitions_selectionnee)
                         montant.append(competitions_selectionnee.prix)
-                        competition = [competitions_selectionnee.nom]
-
-                    elif len(competitions) > 1:
-                        for compet in competitions:
-                            competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
-                            inscription.competition.add(competitions_selectionnee)
-                            montant.append(competitions_selectionnee.prix)
-                            competition.append(competitions_selectionnee.nom)
-
+                        competition.append(competitions_selectionnee.nom)
 
                 val = {
                     'prenom': joueur.user.first_name,
@@ -211,11 +199,12 @@ def inscription(request):
                 html_message = render_to_string('ping/email_cotisation.html', val)
                 plain_message = strip_tags(html_message)
                 send_mail("Inscription saison " + saison_actuelle.nom, plain_message, settings.EMAIL_HOST_USER,
-                            [joueur.user.email], fail_silently=False, html_message=html_message)
+                          [joueur.user.email], fail_silently=False, html_message=html_message)
 
                 return redirect('reuillytt:moncompte')
 
     return render(request, 'ping/inscription.html', locals())
+
 
 # Access information account
 @login_required(login_url='reuillytt:connexion')  # redirect when user is not logged in
@@ -255,30 +244,30 @@ def account(request):
             prix_total = prix_cotisation + prix_competition
             if inscription.paiement:
                 paiement = True
-            else :
+            else:
                 paiement = False
 
     return render(request, 'ping/moncompte.html', locals())
 
 
 class horaires(TemplateView):
-   template_name = "ping/horaires.html"
+    template_name = "ping/horaires.html"
 
 
 class liens(TemplateView):
-   template_name = "ping/liens.html"
+    template_name = "ping/liens.html"
 
 
 class Historique(TemplateView):
-   template_name = "ping/historique.html"
+    template_name = "ping/historique.html"
 
 
 class Mentions(TemplateView):
-   template_name = "ping/mentions.html"
+    template_name = "ping/mentions.html"
 
 
 class Cgu(TemplateView):
-   template_name = "ping/cgu.html"
+    template_name = "ping/cgu.html"
 
 
 
