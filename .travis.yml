@@ -9,6 +9,8 @@ branches:
   only:
     - staging
 
+env: ENV='PRODUCTION'
+
 services:
   - postgresql
 
