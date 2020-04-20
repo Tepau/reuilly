@@ -29,7 +29,7 @@ SECRET_KEY = 'n^z++*z-3$417d=6t!pt49eun8^18jf(tkt6wtpbh!2$$hx2a!'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['reuillyttt.herokuapp.com']
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
