@@ -63,6 +63,16 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+    <div class="container text-center">
+        <div class="creation">
+            <h2>Vous êtes déja connecté</h2>
+        </div>
+    </div>
+
+{% else %}
+
     <div class="container text-center">
         <div class="creation ml-auto mr-auto">
             {% if compte_existant %}
@@ -79,6 +89,8 @@
         </div>
 
     </div>
+
+{% endif %}
 
 {% endblock %}
 
