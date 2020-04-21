@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.views.generic import TemplateView
-from .forms import AdherentForm, ConnexionForm, UserForm, NouvellePhotoForm
+from .forms import ConnexionForm, UserForm, NouvellePhotoForm, InscriptionForm, AdresseForm, JoueurForm
 from .models import *
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
@@ -105,22 +105,22 @@ def creation(request):
 @login_required(login_url='reuillytt:connexion')
 def inscription(request):
     inscrit = False
-    form = AdherentForm(request.POST or None)
+    form = InscriptionForm(request.POST or None)
+    formAdresse = AdresseForm(request.POST or None)
+    formJoueur = JoueurForm(request.POST or None)
 
     if request.method == 'POST':
 
-        form = AdherentForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and formAdresse.is_valid() and formJoueur.is_valid():
             user = User.objects.get(id=request.user.id)
-            date_naissance = form.cleaned_data['date_naissance']
-            telephone = form.cleaned_data['telephone']
-            voie = form.cleaned_data['adresse']
-            code_postal = form.cleaned_data['code_postal']
-            ville = form.cleaned_data['ville']
-            pays = form.cleaned_data['pays']
-            forfaits = form.cleaned_data['forfait']
-            forfait = forfaits[0:forfaits.find('&') - 1]
-            competitions = form.cleaned_data['competitions']
+            date_naissance = formJoueur.cleaned_data['date_naissance']
+            telephone = formJoueur.cleaned_data['telephone']
+            voie = formAdresse.cleaned_data['voie']
+            code_postal = formAdresse.cleaned_data['code_postal']
+            ville = formAdresse.cleaned_data['ville']
+            pays = formAdresse.cleaned_data['pays']
+            forfait = form.cleaned_data['cotisation']
+            competition = form.cleaned_data['competition']
 
             saisons = Saison.objects.all()
             for saison in saisons:
@@ -145,9 +145,9 @@ def inscription(request):
                     montant = [cotisation.prix]
                     competition = []
 
-                    if len(competitions) > 0:
+                    if len(competition) > 0:
 
-                        for compet in competitions:
+                        for compet in competition:
                             ma_competition = compet[0:compet.find('&') - 1]
                             competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
                             inscription.competition.add(competitions_selectionnee)
@@ -181,9 +181,9 @@ def inscription(request):
 
                 competition = []
 
-                if len(competitions) > 0:
+                if len(competition) > 0:
 
-                    for compet in competitions:
+                    for compet in competition:
                         ma_competition = compet[0:compet.find('&') - 1]
                         competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
                         inscription.competition.add(competitions_selectionnee)
