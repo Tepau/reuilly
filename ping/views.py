@@ -177,7 +177,6 @@ def inscription(request):
                 inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation, joueur=joueur)
 
                 montant = [cotisation.prix]
-                print(montant)
 
                 competition = []
 
