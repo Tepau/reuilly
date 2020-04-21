@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.views.generic import TemplateView
-from .forms import ConnexionForm, UserForm, NouvellePhotoForm
+from .forms import ConnexionForm, UserForm, NouvellePhotoForm, InscriptionForm, AdresseForm, JoueurForm
 from .models import *
 from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
