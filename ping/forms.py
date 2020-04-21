@@ -79,8 +79,9 @@ class InscriptionForm(ModelForm):
             for competition in competitions:
                 compet = competition[0:competition.find('&') - 1]
                 competition_selectionne.append(compet)
-                print(competition_selectionne)
             return competition_selectionne
+        else:
+            return competitions
 
 
 class AdresseForm(ModelForm):
