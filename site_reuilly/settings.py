@@ -27,7 +27,7 @@ SECRET_KEY = 'n^z++*z-3$417d=6t!pt49eun8^18jf(tkt6wtpbh!2$$hx2a!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['reuillyttt.herokuapp.com']
 
