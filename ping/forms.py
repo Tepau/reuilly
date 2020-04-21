@@ -32,7 +32,6 @@ class UserForm(forms.Form):
         return cleaned_data
 
 
-
 class InscriptionForm(ModelForm):
 
     COMPETITIONS = []
@@ -58,6 +57,7 @@ class InscriptionForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(InscriptionForm, self).__init__(*args, **kwargs)
         self.fields['cotisation'].empty_label = None
+
 
     class Meta:
 
