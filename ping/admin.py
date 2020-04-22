@@ -49,7 +49,6 @@ class InscriptionAdmin(admin.ModelAdmin):
 
 
 
-
 class JoueurAdmin(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'adress', 'ville', 'paiement')
 
