@@ -16,6 +16,7 @@ services:
 
 script:
   - - psql -c 'create database reuillytt18;' -U postgres
+  - python script-reuilly2.py
   - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py test myApp
