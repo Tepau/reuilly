@@ -4,19 +4,16 @@ python:
 
 before_script:
   - pip install -r requirements.txt
-  - psql -c "CREATE USER malaury WITH PASSWORD 'tEPAU1992';" -U postgres
 
 
 branches:
   only:
     - staging
 
-env: DJANGO_SETTINGS_MODULE="site_reuilly.settings"
+env: DJANGO_SETTINGS_MODULE="site_reuilly.settings.travis"
 
 services:
   - postgresql
 
 script:
-  - python manage.py makemigrations
-  - python manage.py migrate
   - ./manage.py test
