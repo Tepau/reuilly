@@ -5,14 +5,16 @@ from .models import *
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-saisons = Saison.objects.all()
-for saison in saisons:
-    if date.today() >= saison.date_debut_saison:
-        if date.today() < saison.date_fin_saison:
-            saison_actuelle = saison
+
 
 
 class InscriptionAdmin(admin.ModelAdmin):
+
+    saisons = Saison.objects.all()
+    for saison in saisons:
+        if date.today() >= saison.date_debut_saison:
+            if date.today() < saison.date_fin_saison:
+                saison_actuelle = saison
     list_display = ('nom', 'prenom', 'paiement', 'annee', 'montant')
 
     def nom(self, instance):
