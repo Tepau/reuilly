@@ -27,9 +27,9 @@ SECRET_KEY = 'n^z++*z-3$417d=6t!pt49eun8^18jf(tkt6wtpbh!2$$hx2a!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['reuillyttt.herokuapp.com']
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
@@ -89,16 +89,31 @@ WSGI_APPLICATION = 'site_reuilly.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'reuillytt18',
-        'USER': 'malaury',
-        'PASSWORD': 'tEPAU1992',
-        'HOST': '',
-        'PORT': '5432',
+if os.environ.get('ENV') == 'TRAVIS':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': '',
+            'USER': 'postgres',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        },
     }
-}
+
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'reuillytt18',
+            'USER': 'malaury',
+            'PASSWORD': 'tEPAU1992',
+            'HOST': '',
+            'PORT': '5432',
+        }
+    }
+
 
 
 # Password validation

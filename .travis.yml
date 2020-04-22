@@ -14,7 +14,8 @@ branches:
 services:
   - postgresql
 
-env: DJANGO_SETTINGS_MODULE="site_reuilly.settings.travis"
+env:
+  -ENV=TRAVIS
 
 
 script:
