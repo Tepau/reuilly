@@ -4,14 +4,14 @@ python:
 
 before_script:
   - pip install -r requirements.txt
-  - psql -c "CREATE USER malaury WITH PASSWORD 'tEPAU1992';" -U postgres
+
 
 
 branches:
   only:
     - staging
 
-env: SECRET_KEY='TEST'
+env: DJANGO_SETTINGS_MODULE="site_reuilly.settings"
 
 services:
   - postgresql
