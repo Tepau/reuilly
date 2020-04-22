@@ -1,4 +1,4 @@
-from site_reuilly.site_reuilly.settings import *
+from . import *
 
 DATABASES = {
     'default': {
