@@ -35,13 +35,13 @@ class InscriptionForm(ModelForm):
 
     COMPETITIONS = []
     COTISATIONS = []
-    if len(Cotisation.objects.all()) > 0:
+    if len(Cotisation.objects.filter(nom='adulte loisir')) > 0:
         cotisations = Cotisation.objects.all()
         for cotisation in cotisations:
             cotis = (cotisation.nom + " & " + str(cotisation.prix), cotisation.nom + " " + str(cotisation.prix) + "€")
             COTISATIONS.append(cotis)
 
-    if len(Competition.objects.all()) > 0:
+    if len(Competition.objects.filter(nom='fscf')) > 0:
         competitions = Competition.objects.all()
         for competition in competitions:
             compet = (competition.nom + " & " + str(competition.prix), competition.nom + " " + str(competition.prix) + "€")
