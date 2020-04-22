@@ -74,7 +74,7 @@
         </div>
         {% endif %}
         <h2 class="text-center">Formulaire d'inscription</h2>
-    <form class="mt-3" action="{% url 'reuillytt:inscription' %}" enctype="multipart/form-data" method="post" id="formulaire">
+    <form class="mt-3" action="{% url 'reuillytt:inscription' %}"  method="post" id="formulaire">
             {% csrf_token %}
 
             <div class="form-row">

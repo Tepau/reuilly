@@ -7,12 +7,12 @@ var bouton = document.getElementById("total");
 var valid = document.getElementById("valid");
 
 // Gestion checkbox obligatoire
-var choix_forfait = document.getElementsByName('forfait')[0];
+var choix_forfait = document.getElementsByName('cotisation')[0];
 choix_forfait.required = true;
 
 
 // Traitements sur des boutons radio :
-$("input[type=radio][name=forfait]").change(function() {
+$("input[type=radio][name=cotisation]").change(function() {
   indice_prix = $(this).val().indexOf('&');
   recup_prix = $(this).val().substr(indice_prix + 1);
   price_cotisation = parseFloat(recup_prix);

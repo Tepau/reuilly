@@ -1,6 +1,7 @@
 from django import forms
-from django.forms import ModelForm,  DateInput
-from .models import Competition, Cotisation, Inscription, Adresse, Joueur
+from django.forms import DateInput, ModelForm
+
+from .models import Competition, Cotisation, Joueur, Adresse, Inscription
 
 
 class NouvellePhotoForm(forms.Form):
@@ -56,6 +57,7 @@ class InscriptionForm(ModelForm):
         super(InscriptionForm, self).__init__(*args, **kwargs)
         self.fields['cotisation'].empty_label = None
 
+
     class Meta:
 
         model = Inscription
@@ -77,8 +79,9 @@ class InscriptionForm(ModelForm):
             for competition in competitions:
                 compet = competition[0:competition.find('&') - 1]
                 competition_selectionne.append(compet)
-                print(competition_selectionne)
             return competition_selectionne
+        else:
+            return competitions
 
 
 class AdresseForm(ModelForm):

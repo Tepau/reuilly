@@ -1,4 +1,5 @@
-from django.contrib.admin.views.decorators import staff_member_required
+from datetime import date
+
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -143,16 +144,15 @@ def inscription(request):
                     inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation,
                                                              joueur=joueur)
                     montant = [cotisation.prix]
-                    competition = []
 
                     if len(competition) > 0:
 
                         for compet in competition:
-                            ma_competition = compet[0:compet.find('&') - 1]
-                            competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+
+                            competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
+
                             inscription.competition.add(competitions_selectionnee)
                             montant.append(competitions_selectionnee.prix)
-                            competition.append(competitions_selectionnee.nom)
 
                         val = {
                             'prenom': joueur.user.first_name,
@@ -167,27 +167,22 @@ def inscription(request):
                     return redirect('reuillytt:moncompte')
 
             else:
-
                 adresse = Adresse.objects.get_or_create(voie=voie, ville=ville, code_postal=code_postal, pays=pays)
                 cotisation = Cotisation.objects.filter(nom=forfait)[0]
 
                 joueur = Joueur.objects.create(user=user, date_naissance=date_naissance, adresse=adresse[0],
                                                telephone=telephone)
-
                 inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation, joueur=joueur)
-
                 montant = [cotisation.prix]
 
-                competition = []
 
                 if len(competition) > 0:
 
                     for compet in competition:
-                        ma_competition = compet[0:compet.find('&') - 1]
-                        competitions_selectionnee = Competition.objects.filter(nom=ma_competition)[0]
+
+                        competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                         inscription.competition.add(competitions_selectionnee)
                         montant.append(competitions_selectionnee.prix)
-                        competition.append(competitions_selectionnee.nom)
 
                 val = {
                     'prenom': joueur.user.first_name,

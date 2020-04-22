@@ -63,6 +63,16 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+    <div class="container text-center">
+        <div class="connexion">
+            <h2>Vous êtes déja connecté</h2>
+        </div>
+    </div>
+
+{% else %}
+
     <div class="container text-center">
         <div class="connexion ml-auto mr-auto">
             <h1>Connexion</h1>
@@ -77,6 +87,8 @@
             <p>Pas encore Inscrit <a href="{% url 'reuillytt:creation' %}">Inscrivez-vous</a></p>
         </div>
     </div>
+
+{% endif %}
 
 {% endblock %}
 
