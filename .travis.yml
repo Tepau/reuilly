@@ -5,6 +5,7 @@ python:
 before_script:
   - pip install -r requirements.txt
   - psql -c "CREATE USER malaury WITH PASSWORD 'malaury';" -U postgres
+  - psql -c 'create database reuillytt18;' -U postgres
 
 
 branches:
@@ -16,7 +17,6 @@ services:
   - postgresql
 
 script:
-  - - psql -c 'create database reuillytt18;' -U postgres
   - python manage.py makemigrations
   - python manage.py migrate
   - ./manage.py test
