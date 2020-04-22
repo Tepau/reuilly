@@ -10,6 +10,7 @@ for saison in saisons:
         if date.today() < saison.date_fin_saison:
             saison_actuelle = saison
 
+
 class InscriptionAdmin(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'paiement', 'annee', 'montant')
 
@@ -46,11 +47,8 @@ class InscriptionAdmin(admin.ModelAdmin):
         return str(montant_total) + "€"
 
 
-
-
-
 class JoueurAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'prenom', 'adress', 'ville', 'paiement')
+    list_display = ('nom', 'prenom', 'adress', 'ville')
 
     def nom(self, instance):
         return instance.user.last_name
@@ -68,17 +66,21 @@ class JoueurAdmin(admin.ModelAdmin):
         return instance.adresse.ville
     ville.short_description = 'Ville'
 
-    def paiement(self, instance):
-        mon_inscription = instance.inscription_set.all()[0]
-        if mon_inscription.paiement:
-            return 'OK'
-        else:
-            return 'Non effectué'
 
+class SaisonAdmin(admin.ModelAdmin):
+    list_display = ('annee', 'date_debut', 'date_fin')
 
+    def annee(self, instance):
+        return instance.nom
+    annee.short_description = 'Saison'
 
+    def date_debut(self, instance):
+        return instance.date_debut_saison
+    date_debut.short_description = 'Début de saison'
 
-
+    def date_fin(self, instance):
+        return instance.date_fin_saison
+    date_fin.short_description = 'Fin de saison'
 
 
 @admin.register(User)
@@ -110,7 +112,7 @@ class UserAdmin(DjangoUserAdmin):
 
 admin.site.register(Joueur, JoueurAdmin)
 admin.site.register(Inscription, InscriptionAdmin)
-admin.site.register(Saison)
+admin.site.register(Saison, SaisonAdmin)
 admin.site.register(Competition)
 admin.site.register(Cotisation)
 
