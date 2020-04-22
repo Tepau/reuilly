@@ -15,4 +15,7 @@ services:
   - postgresql
 
 script:
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - python manage.py test myApp
   - ./manage.py test
