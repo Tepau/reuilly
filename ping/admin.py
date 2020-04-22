@@ -17,7 +17,7 @@ class InscriptionAdmin(admin.ModelAdmin):
 
     def paiement(self, instance):
         if instance.paiement:
-            return 'OK'
+            return 'OK '
         else:
             return 'Non effectué'
 
