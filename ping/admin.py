@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import *
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
@@ -10,6 +9,7 @@ for saison in saisons:
         if date.today() < saison.date_fin_saison:
             saison_actuelle = saison
 
+
 class InscriptionAdmin(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'paiement', 'annee', 'montant')
 
@@ -18,7 +18,6 @@ class InscriptionAdmin(admin.ModelAdmin):
 
     def prenom(self, instance):
         return instance.joueur.user.first_name
-
 
     def paiement(self, instance):
         if instance.paiement:
@@ -44,7 +43,6 @@ class InscriptionAdmin(admin.ModelAdmin):
         montant_total = prix_competition + prix_cotisation
 
         return str(montant_total) + "€"
-
 
 
 class JoueurAdmin(admin.ModelAdmin):
@@ -88,8 +86,6 @@ class SaisonAdmin(admin.ModelAdmin):
     def date_fin(self, instance):
         return instance.date_fin_saison
     date_fin.short_description = 'Fin de saison'
-
-
 
 
 @admin.register(User)

@@ -4,12 +4,12 @@ python:
 
 before_script:
   - pip install -r requirements.txt
+  - psql -c "CREATE USER malaury WITH PASSWORD 'malaury';" -U postgres
 
 branches:
   only:
     - staging
 
-env: ENV='PRODUCTION'
 
 services:
   - postgresql
