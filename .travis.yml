@@ -6,7 +6,9 @@ before_script:
   - pip install -r requirements.txt
   - psql -c "CREATE USER malaury WITH PASSWORD 'malaury';" -U postgres
   - psql -c 'create database reuillytt18;' -U postgres
+  - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "reuillytt18" to malaury;' -U postgres
 
+GRANT ALL PRIVILEGES ON DATABASE "test_database" to tester;
 
 branches:
   only:
