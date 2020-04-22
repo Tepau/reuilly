@@ -10,7 +10,6 @@ for saison in saisons:
         if date.today() < saison.date_fin_saison:
             saison_actuelle = saison
 
-
 class InscriptionAdmin(admin.ModelAdmin):
     list_display = ('nom', 'prenom', 'paiement', 'annee', 'montant')
 
@@ -47,8 +46,9 @@ class InscriptionAdmin(admin.ModelAdmin):
         return str(montant_total) + "€"
 
 
+
 class JoueurAdmin(admin.ModelAdmin):
-    list_display = ('nom', 'prenom', 'adress', 'ville')
+    list_display = ('nom', 'prenom', 'adress', 'ville', 'paiement')
 
     def nom(self, instance):
         return instance.user.last_name
@@ -66,6 +66,13 @@ class JoueurAdmin(admin.ModelAdmin):
         return instance.adresse.ville
     ville.short_description = 'Ville'
 
+    def paiement(self, instance):
+        mon_inscription = instance.inscription_set.all()[0]
+        if mon_inscription.paiement:
+            return 'OK'
+        else:
+            return 'Non effectué'
+
 
 class SaisonAdmin(admin.ModelAdmin):
     list_display = ('annee', 'date_debut', 'date_fin')
@@ -81,6 +88,8 @@ class SaisonAdmin(admin.ModelAdmin):
     def date_fin(self, instance):
         return instance.date_fin_saison
     date_fin.short_description = 'Fin de saison'
+
+
 
 
 @admin.register(User)
