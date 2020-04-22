@@ -8,7 +8,6 @@ before_script:
   - psql -c 'create database reuillytt18;' -U postgres
   - psql -c 'GRANT ALL PRIVILEGES ON DATABASE "reuillytt18" to malaury;' -U postgres
 
-GRANT ALL PRIVILEGES ON DATABASE "test_database" to tester;
 
 branches:
   only:
