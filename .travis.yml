@@ -10,7 +10,7 @@ branches:
   only:
     - staging
 
-env: DJANGO_SETTINGS_MODULE="site_reuilly.settings.travis"
+env: DJANGO_SETTINGS_MODULE="site_reuilly.travis"
 
 services:
   - postgresql
