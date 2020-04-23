@@ -40,11 +40,11 @@ class InscriptionForm(ModelForm):
 
 
     COTISATIONS = [
-        ('fille -11ans & 50', 'fille -11ans  50€'),
-        ('enfant -11ans & 140', 'fille -11ans  140€'),
-        ('enfant +11ans & 155', 'fille -11ans  155€'),
-        ('adulte competition & 155', 'fille -11ans  155€'),
-        ('adulte loisir & 145', 'fille -11ans  145€'),
+        ('fille -11ans & 50', 'fille -11ans 50€'),
+        ('enfant -11ans & 140', 'fille -11ans 140€'),
+        ('enfant +11ans & 155', 'fille -11ans 155€'),
+        ('adulte competition & 155', 'fille -11ans 155€'),
+        ('adulte loisir & 145', 'fille -11ans 145€'),
     ]
 
     cotisation = forms.ChoiceField(widget=forms.RadioSelect, choices=COTISATIONS)
