@@ -38,7 +38,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractUser):
-    username =[]
+    username = []
     email = models.EmailField(_("email address"), unique=True) # L'adresse email est rendue unique
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # removes email from REQUIRED_FIELDS
@@ -58,7 +58,6 @@ class Adresse(models.Model):
 
 
 class Cotisation(models.Model):
-
     nom = models.CharField(max_length=250)
     prix = models.IntegerField()
     description = models.CharField(max_length=300)

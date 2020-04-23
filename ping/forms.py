@@ -1,6 +1,5 @@
 from django import forms
 from django.forms import DateInput, ModelForm
-
 from .models import Competition, Cotisation, Joueur, Adresse, Inscription
 
 
@@ -56,7 +55,6 @@ class InscriptionForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(InscriptionForm, self).__init__(*args, **kwargs)
         self.fields['cotisation'].empty_label = None
-
 
     class Meta:
 

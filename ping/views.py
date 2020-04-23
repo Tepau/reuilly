@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -10,7 +12,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-@permission_required('ping.add_photo', login_url='/')
+@permission_required('ping.add_image', login_url='/')
 def photo(request):
     ajout = False
     form = NouvellePhotoForm(request.POST or None, request.FILES)
@@ -26,7 +28,7 @@ def photo(request):
     return render(request, 'ping/photo.html', locals())
 
 
-@permission_required('ping.remove_photo', login_url='/')
+@permission_required('ping.remove_image', login_url='/')
 def supprimerphoto(request):
     images = Image.objects.all()
 
