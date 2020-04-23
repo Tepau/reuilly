@@ -28,7 +28,7 @@ def photo(request):
     return render(request, 'ping/photo.html', locals())
 
 
-@permission_required('ping.remove_image', login_url='/')
+@permission_required('ping.delete_image', login_url='/')
 def supprimerphoto(request):
     images = Image.objects.all()
 
