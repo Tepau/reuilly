@@ -140,14 +140,6 @@ class InscriptionPageTestCase(TestCase):
         form = AdresseForm(data=data)
         self.assertTrue(form.is_valid())
 
-    def test_inscription_form_is_ok(self):
-
-        compet =  {'competititon': 'fscf'}
-        cotis = {'cotisation': 'fille -11ans'}
-        form = AdresseForm(compet, cotis )
-        self.assertTrue(form.is_valid())
-
-
 
 
 
