@@ -26,6 +26,7 @@ def photo(request):
         photo = Image()
         photo.nom = form.cleaned_data["nom"]
         photo.photo = form.cleaned_data["photo"]
+        print(photo)
 
         photo.save()
         ajout = True
