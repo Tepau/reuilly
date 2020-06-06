@@ -25,5 +25,3 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'reuillytt/', include('ping.urls', namespace='reuillytt'))
 ]
-
-

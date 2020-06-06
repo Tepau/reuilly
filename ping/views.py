@@ -11,6 +11,11 @@ from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
 
+def ping(request):
+    return render(request, 'ping/ping.html', locals())
+
+def ping2(request):
+    return render(request, 'ping/ping2.html', locals())
 
 @permission_required('ping.add_photo', login_url='/')
 def photo(request):

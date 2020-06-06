@@ -89,32 +89,17 @@ WSGI_APPLICATION = 'site_reuilly.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-if os.environ.get('ENV') == 'TRAVIS':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': '',
-            'USER': 'postgres',
-            'PASSWORD': '',
-            'HOST': '',
-            'PORT': '',
-        },
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'reuillytt18',
+        'USER': 'malaury',
+        'PASSWORD': 'tEPAU1992',
+        'HOST': '',
+        'PORT': '5432',
     }
-
-else:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'reuillytt18',
-            'USER': 'malaury',
-            'PASSWORD': 'tEPAU1992',
-            'HOST': '',
-            'PORT': '5432',
-        }
-    }
-
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
