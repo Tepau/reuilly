@@ -20,6 +20,10 @@ urlpatterns = [
     url(r'^cgu/$', views.Cgu.as_view(), name='cgu'),
     url(r'^ping/$', views.ping, name='ping'),
     url(r'^ping2/$', views.ping2, name='ping2'),
+    url(r'^jouer/$', views.joueur, name='joueur'),
+    url(r'^stat/$', views.stat, name='stat'),
+    url(r'^clubdep/$', views.clubdep, name='clubdep'),
+    url(r'^club/$', views.club, name='club'),
 
 ]
 

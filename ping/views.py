@@ -11,8 +11,20 @@ from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
 
+
+def joueur(request):
+    return render(request, 'ping/joueur.html', locals())
+
+def club(request):
+    return render(request, 'ping/club.html', locals())
+
+def clubdep(request):
+    return render(request, 'ping/clubdep.html', locals())
+
+def stat(request):
+    return render(request, 'ping/stat.html', locals())
+
 def ping(request):
-    x='salut'
     return render(request, 'ping/ping.html', locals())
 
 def ping2(request):
