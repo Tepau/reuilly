@@ -32,17 +32,19 @@ class UserForm(forms.Form):
 
 class InscriptionForm(ModelForm):
 
-    COMPETITIONS = []
-    COTISATIONS = []
-    cotisations = Cotisation.objects.all()
-    for cotisation in cotisations:
-        cotis = (cotisation.nom + " & " + str(cotisation.prix), cotisation.nom + " " + str(cotisation.prix) + "€")
-        COTISATIONS.append(cotis)
+    COMPETITIONS = [
+        ('indivs & 41', 'indivs 41€'),
+        ('fscf & 25', 'fscf 25€'),
+    ]
 
-    competitions = Competition.objects.all()
-    for competition in competitions:
-        compet = (competition.nom + " & " + str(competition.prix), competition.nom + " " + str(competition.prix) + "€")
-        COMPETITIONS.append(compet)
+
+    COTISATIONS = [
+        ('fille -11ans & 50', 'fille -11ans 50€'),
+        ('enfant -11ans & 140', 'fille -11ans 140€'),
+        ('enfant +11ans & 155', 'fille -11ans 155€'),
+        ('adulte competition & 155', 'fille -11ans 155€'),
+        ('adulte loisir & 145', 'fille -11ans 145€'),
+    ]
 
     cotisation = forms.ChoiceField(widget=forms.RadioSelect, choices=COTISATIONS)
     competition = forms.MultipleChoiceField(

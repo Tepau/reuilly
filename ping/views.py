@@ -11,6 +11,12 @@ from django.contrib.auth import authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
 
+def ping(request):
+    x='salut'
+    return render(request, 'ping/ping.html', locals())
+
+def ping2(request):
+    return render(request, 'ping/ping2.html', locals())
 
 @permission_required('ping.add_image', login_url='/')
 def photo(request):
@@ -20,6 +26,7 @@ def photo(request):
         photo = Image()
         photo.nom = form.cleaned_data["nom"]
         photo.photo = form.cleaned_data["photo"]
+        print(photo)
 
         photo.save()
         ajout = True
@@ -148,7 +155,9 @@ def inscription(request):
                     if len(competition) > 0:
 
                         for compet in competition:
+
                             competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
+
                             inscription.competition.add(competitions_selectionnee)
                             montant.append(competitions_selectionnee.prix)
 
@@ -173,9 +182,11 @@ def inscription(request):
                 inscription = Inscription.objects.create(saison=saison_actuelle, cotisation=cotisation, joueur=joueur)
                 montant = [cotisation.prix]
 
+
                 if len(competition) > 0:
 
                     for compet in competition:
+
                         competitions_selectionnee = Competition.objects.filter(nom=compet)[0]
                         inscription.competition.add(competitions_selectionnee)
                         montant.append(competitions_selectionnee.prix)

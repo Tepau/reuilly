@@ -3,6 +3,7 @@
 {% block title %}Inscription{% endblock %}
 {% block head %}
     <link href="{% static 'ping/css/inscription.css' %}" rel="stylesheet">
+    {% load crispy_forms_tags %}
 
 {% endblock %}
 {% block navbar %}
@@ -65,7 +66,7 @@
 {% block content %}
 
 
-{% load crispy_forms_tags %}
+
     <div class="container div-inscription">
         {% if inscrit %}
         <div class="text-center">

@@ -1,5 +1,9 @@
+import datetime
+
 from django.test import TestCase
 from django.urls import reverse
+
+from .forms import InscriptionForm, JoueurForm, AdresseForm
 from .models import *
 from django.test import Client
 from django.contrib.auth import get_user_model
@@ -108,6 +112,33 @@ class CreationComptePageTestCase(TestCase):
         response = self.client.post(reverse('reuillytt:creation'), data)
         self.assertEqual(User.objects.count(), user_count+1)
 
+
+class InscriptionPageTestCase(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+        self.user = get_user_model().objects.create_user(email='test@test.com', password='mot_de_passe')
+
+    def test_joueur_form_is_ok(self):
+
+        joueur_count = Joueur.objects.count()
+        self.client.login(email='test@etest.com', password='mot_de_passe')
+        data = {
+            'date_naissance': datetime.date.today(),
+            'telephone': 1230987654,
+        }
+        form = JoueurForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_adresse_form_is_ok(self):
+        data = {
+            'voie': '40 rue du test',
+            'ville': 'paris',
+            'code_postal': 75012,
+            'pays': 'france',
+        }
+        form = AdresseForm(data=data)
+        self.assertTrue(form.is_valid())
 
 
 
