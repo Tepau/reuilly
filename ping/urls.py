@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^mentions/$', views.Mentions.as_view(), name='mentions'),
     url(r'^cgu/$', views.Cgu.as_view(), name='cgu'),
     url(r'^ping/$', views.ping, name='ping'),
-    url(r'^ping2/$', views.ping, name='ping'),
+    url(r'^ping2/$', views.ping2, name='ping2'),
 
 ]
 
