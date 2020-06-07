@@ -18,12 +18,10 @@ urlpatterns = [
     url(r'^creation/$', views.creation, name='creation'),
     url(r'^mentions/$', views.Mentions.as_view(), name='mentions'),
     url(r'^cgu/$', views.Cgu.as_view(), name='cgu'),
-    url(r'^ping/$', views.ping, name='ping'),
+    url(r'^joueurs/$', views.rechercheJoueur, name='recherchejoueur'),
     url(r'^equipes/$', views.equipes, name='equipes'),
-    url(r'^jouer/$', views.joueur, name='joueur'),
-    url(r'^stat/$', views.stat, name='stat'),
-    url(r'^clubdep/$', views.clubdep, name='clubdep'),
-    url(r'^club/$', views.club, name='club'),
+    url(r'^listejoueurs/$', views.joueurs, name='joueurs'),
+    url(r'^clubs/$', views.rechercheClub, name='rechercheclub'),
 
 ]
 

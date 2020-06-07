@@ -12,20 +12,15 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-def joueur(request):
-    return render(request, 'ping/joueur.html', locals())
 
-def club(request):
-    return render(request, 'ping/club.html', locals())
+def rechercheClub(request):
+    return render(request, 'ping/recherche-club.html', locals())
 
-def clubdep(request):
-    return render(request, 'ping/clubdep.html', locals())
+def joueurs(request):
+    return render(request, 'ping/liste-joueurs.html', locals())
 
-def stat(request):
-    return render(request, 'ping/stat.html', locals())
-
-def ping(request):
-    return render(request, 'ping/ping.html', locals())
+def rechercheJoueur(request):
+    return render(request, 'ping/recherche-joueur.html', locals())
 
 def equipes(request):
     return render(request, 'ping/equipes.html', locals())

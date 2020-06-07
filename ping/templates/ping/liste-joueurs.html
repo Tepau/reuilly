@@ -33,7 +33,7 @@
               </a>
               <!-- bloc menu déroulant -->
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{% url 'reuillytt:joueurs' %}">Joueurs/Joueuses</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:equipes' %}">Les Équipes</a>
                   <a class="dropdown-item" href="{% url 'reuillytt:rechercheclub' %}">Rechercher un club</a>
                   <a class="dropdown-item" href="{% url 'reuillytt:recherchejoueur' %}">Rechercher un joueur</a>
               </div>
@@ -73,9 +73,10 @@
 
 {% block content %}
 <div style="margin-top:100px;">
-    <iframe src="https://www.pongiste.fr/include/pages/equipes.php?num_club=08750074" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+    <iframe src="https://www.pongiste.fr/include/pages/statistiques.php?num_club=08750074" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
     <script type="text/javascript" src="https://www.pongiste.fr/include/js/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.pongiste.fr/include/setIframeHeight-master/dist/set-iframe-height-parent.js"></script>
+
 </div>
 
 {% endblock %}
