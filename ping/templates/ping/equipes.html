@@ -1,0 +1,85 @@
+{% extends 'ping/liens.html' %}
+{% load static %}
+{% block title %}Historique{% endblock %}
+{% block head %}
+    <link href="{% static 'ping/css/liens.css' %}" rel="stylesheet">
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-light bg-white navbar-expand-lg fixed-top" id="mainNav">
+    <div class="mw-100 h-auto">
+        <a class="navbar-brand mw-100" href="{% url 'index' %}"><img class="mw-100 logo" src="{% static 'ping/img/logo_blanc_reuilly.jpg' %}"></a>
+    </div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#club">Le Club</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#actualites">Actualites</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase scroll" href="{% url 'index' %}#contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sportif
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Joueur/Joueuses</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:stat' %}">Top progression</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:clubdep' %}">Rechercher un club</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:ping' %}">Rechercher un joueur</a>
+              </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-uppercase scroll"  href="{% url 'index' %}#portfolio">Album</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Divers
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Liens Utiles</a>
+              </div>
+            </li>
+            <li class="nav-item" id="social-network">
+                <div class="nav-link js-scroll-trigger">
+                    <a href="https://www.facebook.com/reuillytt/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/reuillytt/"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/channel/UCFEcNL6BP2ZxzoCFLcKYjcA"><i class="fab fa-youtube fa-2x"></i></a>
+                </div>
+            </li>
+            <li class="moncompte">
+                {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:moncompte' %}">Mon Compte</a>
+                <a href="{% url 'reuillytt:deconnexion' %}"><i class="fas fa-sign-out-alt fa-2x ml-3"></i></a>
+                {% else %}
+                <a class="btn btn-primary btn-xl  js-scroll-trigger" href="{% url 'reuillytt:connexion' %}">Connexion</a>
+                {% endif %}
+            </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+
+{% block content %}
+<div style="margin-top:100px;">
+    <iframe src="https://www.pongiste.fr/include/pages/equipes.php?num_club=08750074" width="100%" height="100%" scrolling="no" frameborder="0"></iframe>
+    <script type="text/javascript" src="https://www.pongiste.fr/include/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.pongiste.fr/include/setIframeHeight-master/dist/set-iframe-height-parent.js"></script>
+</div>
+
+{% endblock %}
+
+{% block JavaScript %}
+{% endblock %}

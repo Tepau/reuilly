@@ -57,6 +57,19 @@
             <li class="nav-item">
                 <a class="nav-link text-uppercase scroll" href="#contact">Contact</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sportif
+              </a>
+              <!-- bloc menu déroulant -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'reuillytt:equipes' %}">Les Équipes</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:liens' %}">Joueur/Joueuses</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:stat' %}">Top progression</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:clubdep' %}">Rechercher un club</a>
+                  <a class="dropdown-item" href="{% url 'reuillytt:ping' %}">Rechercher un joueur</a>
+              </div>
+            </li>
             <li class="nav-item">
                <a class="nav-link text-uppercase scroll"  href="#portfolio">Album</a>
             </li>

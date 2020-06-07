@@ -27,8 +27,8 @@ def stat(request):
 def ping(request):
     return render(request, 'ping/ping.html', locals())
 
-def ping2(request):
-    return render(request, 'ping/ping2.html', locals())
+def equipes(request):
+    return render(request, 'ping/equipes.html', locals())
 
 @permission_required('ping.add_image', login_url='/')
 def photo(request):
