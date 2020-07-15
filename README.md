@@ -27,4 +27,4 @@ Application web destinée au club de tennis de table "Espérance de Reuilly"
 
 ### Utilsation
 
-L'application est disponible ici : http://reuillyttt.herokuapp.com/
+L'application est disponible ici : http://reuillyping.com/
